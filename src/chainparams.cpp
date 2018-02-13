@@ -145,13 +145,13 @@ public:
         // genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
 		consensus.hashGenesisBlock = genesis.GetHash();
 
-        printf("hashGenesisBlock-main = %s\n", consensus.hashGenesisBlock.ToString().c_str());
-        printf("hashMerkleRoot-main = %s\n"  , genesis.hashMerkleRoot.ToString().c_str());
+        //printf("hashGenesisBlock-main = %s\n", consensus.hashGenesisBlock.ToString().c_str());
+        //printf("hashMerkleRoot-main = %s\n"  , genesis.hashMerkleRoot.ToString().c_str());
 
 //      genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
 //      consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256S("0xd48c3ec4d878c80786727e30d2489111086c8cdba4f949022eb1d302f3fd4566"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x2f143435cd7d80fe1cc95cea276d6897a86c80ec113d4e627ff4724bf0583dc1"));
+        assert(consensus.hashGenesisBlock == uint256S("0x130df13ce210c921e1f8a1b707fae519ce1427073bc850d794ac010c0ff7a3a5"));
+        assert(genesis.hashMerkleRoot == uint256S("0x2f143435cd7d80fe1cc95cea276d6897a86c80ec113d4e627ff4724bf0583dc1"));
 
 //      Note that of those with the service bits flag, most only support a subset of possible options
 //      vSeeds.emplace_back("seed-a.litecoin.loshan.co.uk", true);
