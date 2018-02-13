@@ -27,7 +27,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     txNew.vout[0].scriptPubKey = genesisOutputScript;
 
 
-    printf("size2g ---- %u \n ",  txNew.vin[0].scriptSig.size() );
+    //printf("size2g ---- %u \n ",  txNew.vin[0].scriptSig.size() );
     //printf("size2g ---- %s \n ",  tx.vin[0].scriptSig);
 
     CBlock genesis;
@@ -114,12 +114,12 @@ public:
          // Deployment of BIP68, BIP112, and BIP113.
          consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit        = 0;
          consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1485561600; // January 28, 2017
-         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout   = 1518064913; // January 31st, 2018
+         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout   = 1518537600; // January 31st, 2018
 
          // Deployment of SegWit (BIP141, BIP143, and BIP147)
          consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit        = 1;
          consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1485561600; // January 28, 2017
-         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout   = 1518064913; // January 31st, 2018
+         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout   = 1518537600; // January 31st, 2018
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000ba50a60f8b56c7fe0");
@@ -139,19 +139,19 @@ public:
         nDefaultPort       = 9528;
         nPruneAfterHeight  = 100;
 
-        genesis = CreateGenesisBlock(1518064913,       3614469, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1518537600,       2016310, 0x1e0ffff0, 1, 50 * COIN);
         // genesis = CreateGenesisBlock(1518064913, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
         // genesis = CreateGenesisBlock(1516871551, 2516602251, 0x1e0ffff0, 1, 50 * COIN);
         // genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
 		consensus.hashGenesisBlock = genesis.GetHash();
 
-        // printf("hashGenesisBlock-main = %s\n", consensus.hashGenesisBlock.ToString().c_str());
-        // printf("hashMerkleRoot-main = %s\n"  , genesis.hashMerkleRoot.ToString().c_str());
+        printf("hashGenesisBlock-main = %s\n", consensus.hashGenesisBlock.ToString().c_str());
+        printf("hashMerkleRoot-main = %s\n"  , genesis.hashMerkleRoot.ToString().c_str());
 
 //      genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
 //      consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xd48c3ec4d878c80786727e30d2489111086c8cdba4f949022eb1d302f3fd4566"));
-        assert(genesis.hashMerkleRoot == uint256S("0x2f143435cd7d80fe1cc95cea276d6897a86c80ec113d4e627ff4724bf0583dc1"));
+        //assert(consensus.hashGenesisBlock == uint256S("0xd48c3ec4d878c80786727e30d2489111086c8cdba4f949022eb1d302f3fd4566"));
+        //assert(genesis.hashMerkleRoot == uint256S("0x2f143435cd7d80fe1cc95cea276d6897a86c80ec113d4e627ff4724bf0583dc1"));
 
 //      Note that of those with the service bits flag, most only support a subset of possible options
 //      vSeeds.emplace_back("seed-a.litecoin.loshan.co.uk", true);
@@ -184,8 +184,8 @@ public:
 
         chainTxData = ChainTxData{
             // Data as of block db42d00d824950a125f9b08b6b6c282c484781562fa8b3bd29d6ce4a2627c348 (height 1259851).
-            1518064913, // * UNIX timestamp of last known number of transactions
-            0,          // * total number of transactions between genesis and that timestamp
+            1518537600, // * UNIX timestamp of last known number of transactions
+            1,          // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.06       // * estimated number of transactions per second after that timestamp
         };
