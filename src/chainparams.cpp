@@ -96,11 +96,11 @@ public:
     CMainParams() {
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 840000;
-        consensus.BIP34Height = 710000; // 710000;
-        // consensus.BIP34Hash  = uint256S("fa09d204a83a768ed5a7c8d441fa62f2043abf420cff1226c7b4329aeb9d51cf");
-        consensus.BIP65Height = 918684; // 918684; // bab3041e8977e0dc3eeff63fe707b92bde1dd449d8efafb248c27c8264cc311a
-        consensus.BIP66Height = 811879; // 811879; // 7aceee012833fa8952f8835d8b1b3ae233cd6ab08fdb27a771d2bd7bdc491894
-        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); 
+        consensus.BIP34Height  = 710000; // 710000;
+        // consensus.BIP34Hash = uint256S("fa09d204a83a768ed5a7c8d441fa62f2043abf420cff1226c7b4329aeb9d51cf");
+        consensus.BIP65Height  = 918684; // 918684; // bab3041e8977e0dc3eeff63fe707b92bde1dd449d8efafb248c27c8264cc311a
+        consensus.BIP66Height  = 811879; // 811879; // 7aceee012833fa8952f8835d8b1b3ae233cd6ab08fdb27a771d2bd7bdc491894
+        consensus.powLimit     = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
         consensus.nPowTargetSpacing = 2.5 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -123,7 +123,7 @@ public:
 
         // The best chain should have at least this much work.
         //consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000ba50a60f8b56c7fe0");
-        consensus.nMinimumChainWork = uint256S("0x01");
+        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000032b9b55c2");
 
         // By default assume that the signatures in ancestors of this block are valid.
         // consensus.defaultAssumeValid = uint256S("0xd48c3ec4d878c80786727e30d2489111086c8cdba4f949022eb1d302f3fd4566"); //0
@@ -143,26 +143,15 @@ public:
         nPruneAfterHeight  = 100;
 
         genesis = CreateGenesisBlock(1518537600,       2016310, 0x1e0ffff0, 1, 50 * COIN);
-        // genesis = CreateGenesisBlock(1518064913, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
-        // genesis = CreateGenesisBlock(1516871551, 2516602251, 0x1e0ffff0, 1, 50 * COIN);
-        // genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
 		consensus.hashGenesisBlock = genesis.GetHash();
 
-        //printf("hashGenesisBlock-main = %s\n", consensus.hashGenesisBlock.ToString().c_str());
-        //printf("hashMerkleRoot-main = %s\n"  , genesis.hashMerkleRoot.ToString().c_str());
+        printf("hashGenesisBlock-main = %s\n", consensus.hashGenesisBlock.ToString().c_str());
+        printf("hashMerkleRoot-main = %s\n"  , genesis.hashMerkleRoot.ToString().c_str());
 
-//      genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
-//      consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x130df13ce210c921e1f8a1b707fae519ce1427073bc850d794ac010c0ff7a3a5"));
         assert(genesis.hashMerkleRoot == uint256S("0x2f143435cd7d80fe1cc95cea276d6897a86c80ec113d4e627ff4724bf0583dc1"));
 
 //      Note that of those with the service bits flag, most only support a subset of possible options
-//      vSeeds.emplace_back("seed-a.litecoin.loshan.co.uk", true);
-//      vSeeds.emplace_back("dnsseed.thrasher.io"         , true);
-//      vSeeds.emplace_back("dnsseed.litecointools.com"   , true);
-//      vSeeds.emplace_back("dnsseed.litecoinpool.org"    , true);
-//      vSeeds.emplace_back("dnsseed.koin-project.com"    , false);
-
 		vSeeds.emplace_back("dnsseed.happyuc.net", true); // s0
 		vSeeds.emplace_back("dnsseed.happyuc.org", true); // s1
 
@@ -181,17 +170,18 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                { 0, uint256S("0x001")}
-               // {  0, uint256S("0xd48c3ec4d878c80786727e30d2489111086c8cdba4f949022eb1d302f3fd4566")}
+                //{ 0, uint256S("0x001")}
+                {   128, uint256S("0x73db0608b6f478beb506f664e766b3e45f09911787b4c89cf4b62e06836d16a8")},
+                {  3112, uint256S("0x56d324f20b2e10e54d777a7f1bfbc3e61abd96487ba10676593dbd116e953983")}
             }
         };
 
         chainTxData = ChainTxData{
             // Data as of block db42d00d824950a125f9b08b6b6c282c484781562fa8b3bd29d6ce4a2627c348 (height 1259851).
-            0,//1518537600, // * UNIX timestamp of last known number of transactions
-            0,//1,          // * total number of transactions between genesis and that timestamp
-                        //   (the tx=... number in the SetBestChain debug.log lines)
-            0,//0.06       // * estimated number of transactions per second after that timestamp
+            1518693874,//1518537600, // * UNIX timestamp of last known number of transactions
+            1,//1,          // * total number of transactions between genesis and that timestamp
+                            //   (the tx=... number in the SetBestChain debug.log lines)
+            0.001           // * estimated number of transactions per second after that timestamp
         };
     }
 };
